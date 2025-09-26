@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import { NavLink } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,7 @@ export default function Header() {
   const navLinks = [
     { name: "Home", to: "/" },
     { name: "Properties", to: `/properties/${propertyId}` },
-    { name: "Bookings", to: `/booking/${bookingId}` },
+    { name: "Bookings", to: `/allbookings` },
     { name: "About Us", to: `/payment/${paymentId}` },
   ];
 
@@ -33,7 +34,7 @@ export default function Header() {
                   <NavLink
                     key={index}
                     to={link.to}
-                    end={link.name === "Home"}
+                    end={link.name === "Home"} // only exact "/" makes Home active
                     className={({ isActive }) =>
                       `font-bold transition-colors ${
                         isActive
@@ -54,39 +55,7 @@ export default function Header() {
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-gray-700 hover:text-red-600 focus:outline-none"
               >
-                {isOpen ? (
-                  // Close Icon (X)
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-7 w-7"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                ) : (
-                  // Hamburger Menu Icon
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-7 w-7"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                )}
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
           </div>

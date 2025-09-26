@@ -1,10 +1,8 @@
 import React from 'react'
-
-import twitter from "../assets/twitter.svg"
-import insta from "../assets/insta.svg"
-import linkdin from "../assets/linkdin.svg"
-import facebook from "../assets/facebook.svg"
-
+import { TbBrandFacebook } from "react-icons/tb";
+import { CiTwitter } from "react-icons/ci";
+import { FaInstagram } from "react-icons/fa";
+import { LuLinkedin } from "react-icons/lu";
 
 const Footer = () => {
   return (
@@ -28,18 +26,18 @@ const Footer = () => {
             {/* Social Media Icons */}
             <div className="flex  space-x-4">
               
-        
-             <img src={facebook} alt="" className='w-4 h-4' />
-
-
-             
-             <img src={twitter} alt="" className='w-4 h-4 ' />
-          
-           <img src={insta} alt=""  className='w-4 h-4 '/>
-              
-               
-             <img src={linkdin} alt="" className='w-4 h-4' />
-             
+              <a href="#" className="text-black ">
+                <TbBrandFacebook size={`20px`} />
+              </a>
+             <a href="#" className="text-black ">
+                <CiTwitter size={`22px`} />
+              </a>
+               <a href="#" className="text-black ">
+               <FaInstagram size={`20px`} />
+              </a>
+               <a href="#" className="text-black ">
+               <LuLinkedin size={`20px`} />
+              </a>
             </div>
           </div>
         </div>
