@@ -1,40 +1,34 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/authSlice";
 
 export default function Signup() {
-  // State for form inputs
-  const [formData, setFormData] = useState({
+   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
 
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Simple validation
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
 
-    console.log("User data:", formData);
-    alert("Sign Up Successful (mock) 🚀");
+    // Mock signup → login user automatically
+    const userData = { name: formData.fullName, email: formData.email };
+    dispatch(login(userData));
 
-    // Later you will call API here with axios or fetch
-    // axios.post("/api/signup", formData)
+    navigate("/"); // redirect after signup
   };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">

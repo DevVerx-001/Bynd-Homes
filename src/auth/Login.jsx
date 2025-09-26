@@ -1,14 +1,23 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/authSlice";
+
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+ const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log("Email:", email, "Password:", password);
-    // yahan backend API call (axios) add kar sakte ho
+
+    // Fake login, later connect API
+    const userData = { email, name: "Aslan" };
+    dispatch(login(userData));
+
+    navigate("/"); // redirect to homepage after login
   };
 
   return (
