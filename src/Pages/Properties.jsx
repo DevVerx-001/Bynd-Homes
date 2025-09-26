@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FiSearch } from "react-icons/fi";
+
 
 const properties = [
   {
@@ -87,30 +87,54 @@ const Properties = () => {
           Discover Your Next Getaway
         </h2>
 
-        <div className="mt-6 flex justify-center gap-6">
-          <div className="flex items-center border rounded-md shadow-sm overflow-hidden w-[30%] max-w-xl">
-            {/* Search Icon */}
-            <span className="pl-3 text-gray-400">
-              <FiSearch className="h-5 w-5" />
-            </span>
+        <div className="mt-6 flex justify-center gap-4 sm:gap-3 md:gap-4 flex-wrap sm:flex-nowrap">
+  <div
+    className="
+      flex items-center border rounded-md shadow-sm overflow-hidden 
+      w-[80%] max-sm:w-[93%] md:w-[60%] lg:w-[30%] max-w-xl
+    "
+  >
+    {/* Search Icon */}
+    <span className="pl-3 text-gray-400">
+     <svg
+  xmlns="http://www.w3.org/2000/svg"
+  className="h-5 w-5 text-gray-400"
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke="currentColor"
+  strokeWidth="2"
+>
+  <path
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z"
+  />
+</svg>
 
-            {/* Input */}
-            <input
-              type="text"
-              placeholder="Search by location, property type, or amenities..."
-              className="flex-1 px-3 py-2 focus:outline-none text-gray-700"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
+    </span>
 
-          <button
-            className="px-6 py-2 text-white rounded-md bg-[#4B5470]"
-            onClick={handleSearch}
-          >
-            Search
-          </button>
-        </div>
+    {/* Input */}
+    <input
+      type="text"
+      placeholder="Search by location, property type, or amenities..."
+      className="flex-1 px-3 py-2 focus:outline-none text-gray-700"
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+    />
+  </div>
+
+  <button
+    className="
+      px-4 max-sm:px-6 md:px-5 lg:px-6 
+      py-2 text-white rounded-md bg-[#4B5470] 
+      w-auto sm:w-[25%] md:w-[20%] lg:w-auto
+    "
+    onClick={handleSearch}
+  >
+    Search
+  </button>
+</div>
+
       </section>
       <Link to={`/viewbooking/${ViewBookingId}`} className="min-h-screen bg-gray-50">
         <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
@@ -156,3 +180,7 @@ const Properties = () => {
 }
 
 export default Properties
+
+
+
+
