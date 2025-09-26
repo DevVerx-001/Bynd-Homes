@@ -1,4 +1,5 @@
 import React from "react";
+import { useAuth } from "./context/AuthContext";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import HomePage from "./Pages/HomePage";
@@ -11,74 +12,75 @@ import ViewBooking from "./Pages/ViewBooking";
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { useSelector } from "react-redux";
+import AlllBooking from "./Pages/AlllBooking";
+import GetoneBooking from "./Pages/Payment";
+
+
 function App() {
-  // const { user } = useAuth();
-    const user = useSelector((state) => state.auth.user);
+  const { user } = useAuth();
   return (
     <>
       {/* Header always visible */}
-      {/* {user && <Header />}
+      {<Header />}
       <div className={user ? "pt-16" : ""}>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <HomePage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/properties/:id"
-            element={
-              <ProtectedRoute>
-                <Properties />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/booking/:id"
-            element={
-              <ProtectedRoute>
-                <Booking />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/payment/:id"
-            element={
-              <ProtectedRoute>
-                <Payment />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/viewbooking/:id"
-            element={
-              <ProtectedRoute>
-                <ViewBooking />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/properties/:id"
+          element={
+            <ProtectedRoute>
+              <Properties />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/signlebooking/:id"
+          element={
+            // <ProtectedRoute>
+              <GetoneBooking/>
+            // </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/allbookings"
+          element={
+            <ProtectedRoute>
+              <AlllBooking/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/payment/:id"
+          element={
+            <ProtectedRoute>
+              <Payment />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/viewbooking/:id"
+          element={
+            <ProtectedRoute>
+              <ViewBooking />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    
+
+   
+       
       </div>
-      {user && <Footer />} */}
-      <Header />
-      <div className="pt-16">
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={<HomePage />} />
-          <Route path="/properties/:id" element={<Properties />} />
-          <Route path="/booking/:id" element={<Booking />} />
-          <Route path="/payment/:id" element={<Payment />} />
-          <Route path="/viewbooking/:id" element={<ViewBooking />} />
-        </Routes>
-      </div>
-       <Footer />
+       {user && <Footer />}
     </>
   );
 }
